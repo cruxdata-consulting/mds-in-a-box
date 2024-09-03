@@ -11,7 +11,7 @@ invoke setup-all
 ```
 - run pipeline
 ```
-python ./dlt/sample_pipeline.py
+invoke run-pipelines
 ```
 - run dbt 
 ```
