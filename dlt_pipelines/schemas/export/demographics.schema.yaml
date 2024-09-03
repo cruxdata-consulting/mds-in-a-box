@@ -1,0 +1,343 @@
+version: 2
+version_hash: nZPloOPpzaq5cE3ykQNFtD76mihLrREZ7ycmzi1ut/0=
+engine_version: 9
+name: demographics
+tables:
+  _dlt_version:
+    columns:
+      version:
+        data_type: bigint
+        nullable: false
+      engine_version:
+        data_type: bigint
+        nullable: false
+      inserted_at:
+        data_type: timestamp
+        nullable: false
+      schema_name:
+        data_type: text
+        nullable: false
+      version_hash:
+        data_type: text
+        nullable: false
+      schema:
+        data_type: text
+        nullable: false
+    write_disposition: skip
+    description: Created by DLT. Tracks schema updates
+  _dlt_loads:
+    columns:
+      load_id:
+        data_type: text
+        nullable: false
+      schema_name:
+        data_type: text
+        nullable: true
+      status:
+        data_type: bigint
+        nullable: false
+      inserted_at:
+        data_type: timestamp
+        nullable: false
+      schema_version_hash:
+        data_type: text
+        nullable: true
+    write_disposition: skip
+    description: Created by DLT. Tracks completed loads
+  gdp:
+    columns:
+      country_name:
+        data_type: text
+        nullable: true
+      country_code:
+        data_type: text
+        nullable: true
+      indicator_name:
+        data_type: text
+        nullable: true
+      indicator_code:
+        data_type: text
+        nullable: true
+      year:
+        data_type: text
+        nullable: true
+      value:
+        data_type: text
+        nullable: true
+      _dlt_load_id:
+        data_type: text
+        nullable: false
+      _dlt_id:
+        data_type: text
+        nullable: false
+        unique: true
+    write_disposition: replace
+    x-normalizer:
+      seen-data: true
+  population:
+    columns:
+      sort_order:
+        data_type: text
+        nullable: true
+      loc_id:
+        data_type: text
+        nullable: true
+      notes:
+        data_type: text
+        nullable: true
+      iso3_code:
+        data_type: text
+        nullable: true
+      iso2_code:
+        data_type: text
+        nullable: true
+      sdmx_code:
+        data_type: text
+        nullable: true
+      loc_type_id:
+        data_type: text
+        nullable: true
+      loc_type_name:
+        data_type: text
+        nullable: true
+      parent_id:
+        data_type: text
+        nullable: true
+      location:
+        data_type: text
+        nullable: true
+      var_id:
+        data_type: text
+        nullable: true
+      variant:
+        data_type: text
+        nullable: true
+      time:
+        data_type: text
+        nullable: true
+      t_population1_jan:
+        data_type: text
+        nullable: true
+      t_population1_july:
+        data_type: text
+        nullable: true
+      t_population_male1_july:
+        data_type: text
+        nullable: true
+      t_population_female1_july:
+        data_type: text
+        nullable: true
+      pop_density:
+        data_type: text
+        nullable: true
+      pop_sex_ratio:
+        data_type: text
+        nullable: true
+      median_age_pop:
+        data_type: text
+        nullable: true
+      nat_change:
+        data_type: text
+        nullable: true
+      nat_change_rt:
+        data_type: text
+        nullable: true
+      pop_change:
+        data_type: text
+        nullable: true
+      pop_growth_rate:
+        data_type: text
+        nullable: true
+      doubling_time:
+        data_type: text
+        nullable: true
+      births:
+        data_type: text
+        nullable: true
+      births1519:
+        data_type: text
+        nullable: true
+      cbr:
+        data_type: text
+        nullable: true
+      tfr:
+        data_type: text
+        nullable: true
+      nrr:
+        data_type: text
+        nullable: true
+      mac:
+        data_type: text
+        nullable: true
+      srb:
+        data_type: text
+        nullable: true
+      deaths:
+        data_type: text
+        nullable: true
+      deaths_male:
+        data_type: text
+        nullable: true
+      deaths_female:
+        data_type: text
+        nullable: true
+      cdr:
+        data_type: text
+        nullable: true
+      l_ex:
+        data_type: text
+        nullable: true
+      l_ex_male:
+        data_type: text
+        nullable: true
+      l_ex_female:
+        data_type: text
+        nullable: true
+      le15:
+        data_type: text
+        nullable: true
+      le15_male:
+        data_type: text
+        nullable: true
+      le15_female:
+        data_type: text
+        nullable: true
+      le65:
+        data_type: text
+        nullable: true
+      le65_male:
+        data_type: text
+        nullable: true
+      le65_female:
+        data_type: text
+        nullable: true
+      le80:
+        data_type: text
+        nullable: true
+      le80_male:
+        data_type: text
+        nullable: true
+      le80_female:
+        data_type: text
+        nullable: true
+      infant_deaths:
+        data_type: text
+        nullable: true
+      imr:
+        data_type: text
+        nullable: true
+      l_bsurviving_age1:
+        data_type: text
+        nullable: true
+      under5_deaths:
+        data_type: text
+        nullable: true
+      q5:
+        data_type: text
+        nullable: true
+      q0040:
+        data_type: text
+        nullable: true
+      q0040_male:
+        data_type: text
+        nullable: true
+      q0040_female:
+        data_type: text
+        nullable: true
+      q0060:
+        data_type: text
+        nullable: true
+      q0060_male:
+        data_type: text
+        nullable: true
+      q0060_female:
+        data_type: text
+        nullable: true
+      q1550:
+        data_type: text
+        nullable: true
+      q1550_male:
+        data_type: text
+        nullable: true
+      q1550_female:
+        data_type: text
+        nullable: true
+      q1560:
+        data_type: text
+        nullable: true
+      q1560_male:
+        data_type: text
+        nullable: true
+      q1560_female:
+        data_type: text
+        nullable: true
+      net_migrations:
+        data_type: text
+        nullable: true
+      cnmr:
+        data_type: text
+        nullable: true
+      _dlt_load_id:
+        data_type: text
+        nullable: false
+      _dlt_id:
+        data_type: text
+        nullable: false
+        unique: true
+    write_disposition: replace
+    x-normalizer:
+      seen-data: true
+  _dlt_pipeline_state:
+    columns:
+      version:
+        data_type: bigint
+        nullable: false
+      engine_version:
+        data_type: bigint
+        nullable: false
+      pipeline_name:
+        data_type: text
+        nullable: false
+      state:
+        data_type: text
+        nullable: false
+      created_at:
+        data_type: timestamp
+        nullable: false
+      version_hash:
+        data_type: text
+        nullable: true
+      _dlt_load_id:
+        data_type: text
+        nullable: false
+      _dlt_id:
+        data_type: text
+        nullable: false
+        unique: true
+    write_disposition: append
+    file_format: preferred
+    x-normalizer:
+      seen-data: true
+settings:
+  detections:
+  - iso_timestamp
+  default_hints:
+    not_null:
+    - _dlt_id
+    - _dlt_root_id
+    - _dlt_parent_id
+    - _dlt_list_idx
+    - _dlt_load_id
+    foreign_key:
+    - _dlt_parent_id
+    root_key:
+    - _dlt_root_id
+    unique:
+    - _dlt_id
+normalizers:
+  names: snake_case
+  json:
+    module: dlt.common.normalizers.json.relational
+previous_hashes:
+- PLw3imSH1QbZ9KphGsggKOzetcKrvcB4/p/heTq+42Y=
+- xjDpQUg6iccuybs/x3VEhectF/za522h252DFg6/VNY=

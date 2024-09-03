@@ -1,0 +1,35 @@
+# General settings
+schema_prefix: stg_
+ignore_tables: ^_dlt.*
+
+# Column renaming
+column_renaming:
+  - name: timestamp_at
+    regex_match:
+      - ^(created|updated|deleted)$
+    regex_replace: \1_at
+  - name: id
+    regex_match: 
+      - ^id$
+    regex_replace: "{{source}}_id"
+
+# Column transformations
+column_transformations:
+  - name: to_lowercase
+    apply_to:
+      type: str
+    sql: "lower({{ column }})"
+  - name: strip_whitespace
+    apply_to:
+      type: str
+    sql: "trim({{ column }})"
+
+# Custom SQL to be added after the main SELECT statement
+post_hook_sql: |
+  where updated_at > (select max(updated_at) from {{ this }})
+
+# Define what changes are considered breaking
+breaking_changes:
+  - remove_column
+  - change_column_type
+  - change_primary_key

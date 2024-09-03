@@ -1,0 +1,7 @@
+version: 2
+sources:
+- name: raw_demographics_20240903033039
+  schema: raw_demographics_20240903033039
+  tables:
+  - name: gdp
+  - name: population

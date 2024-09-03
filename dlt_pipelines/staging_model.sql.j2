@@ -1,0 +1,11 @@
+with source as (
+    select * from {% raw %}{{{% endraw %} source('{{source_name}}', '{{table_name}}') {% raw %}}}{% endraw %}
+),
+
+renamed as (
+    select {% for column in columns %}
+        {% if not loop.first %}, {% endif %}{{ column.name_raw }} as {{ column.name_renamed }}{% endfor %}
+    from source
+)
+
+select * from renamed

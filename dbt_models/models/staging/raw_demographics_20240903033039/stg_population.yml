@@ -1,0 +1,78 @@
+version: 2
+models:
+- name: stg_population
+  columns:
+  - name: sort_order
+  - name: loc_id
+  - name: notes
+  - name: iso3_code
+  - name: iso2_code
+  - name: sdmx_code
+  - name: loc_type_id
+  - name: loc_type_name
+  - name: parent_id
+  - name: location
+  - name: var_id
+  - name: variant
+  - name: time
+  - name: t_population1_jan
+  - name: t_population1_july
+  - name: t_population_male1_july
+  - name: t_population_female1_july
+  - name: pop_density
+  - name: pop_sex_ratio
+  - name: median_age_pop
+  - name: nat_change
+  - name: nat_change_rt
+  - name: pop_change
+  - name: pop_growth_rate
+  - name: doubling_time
+  - name: births
+  - name: births1519
+  - name: cbr
+  - name: tfr
+  - name: nrr
+  - name: mac
+  - name: srb
+  - name: deaths
+  - name: deaths_male
+  - name: deaths_female
+  - name: cdr
+  - name: l_ex
+  - name: l_ex_male
+  - name: l_ex_female
+  - name: le15
+  - name: le15_male
+  - name: le15_female
+  - name: le65
+  - name: le65_male
+  - name: le65_female
+  - name: le80
+  - name: le80_male
+  - name: le80_female
+  - name: infant_deaths
+  - name: imr
+  - name: l_bsurviving_age1
+  - name: under5_deaths
+  - name: q5
+  - name: q0040
+  - name: q0040_male
+  - name: q0040_female
+  - name: q0060
+  - name: q0060_male
+  - name: q0060_female
+  - name: q1550
+  - name: q1550_male
+  - name: q1550_female
+  - name: q1560
+  - name: q1560_male
+  - name: q1560_female
+  - name: net_migrations
+  - name: cnmr
+  - name: _dlt_load_id
+    tests:
+    - not_null
+  - name: _dlt_id
+    tests:
+    - not_null
+    - unique

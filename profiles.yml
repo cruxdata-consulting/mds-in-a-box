@@ -1,0 +1,6 @@
+mds-local:
+  target: dev
+  outputs:
+    dev:
+      type: duckdb
+      path: 'mdsinabox.duckdb'

@@ -1,0 +1,17 @@
+version: 2
+models:
+- name: stg_gdp
+  columns:
+  - name: country_name
+  - name: country_code
+  - name: indicator_name
+  - name: indicator_code
+  - name: year
+  - name: value
+  - name: _dlt_load_id
+    tests:
+    - not_null
+  - name: _dlt_id
+    tests:
+    - not_null
+    - unique

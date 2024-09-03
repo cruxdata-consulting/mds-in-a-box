@@ -1,0 +1,38 @@
+name: 'mdsinabox'
+version: '1.0.0'
+
+profile: 'mds-local'
+
+# These configurations specify where dbt should look for different types of files.
+model-paths: ["models"]
+analysis-paths: ["analyses"]
+test-paths: ["tests"]
+seed-paths: ["seeds"]
+macro-paths: ["macros"]
+snapshot-paths: ["snapshots"]
+
+packages-install-path: .packages
+
+clean-targets:         # directories to be removed by `dbt clean`
+  - "target"
+  - ".packages"
+
+
+# Configuring models
+# Full documentation: https://docs.getdbt.com/docs/configuring-models
+models:
+  mdsinabox:
+    staging:
+      +materialized: view
+    intermediate:
+      +materialized: ephemeral
+    marts:
+      +materialized: table
+
+seeds:
+  mdsinabox:
+    country_code_mapping:
+      +column_types:
+        iso3166_code: varchar(3)
+        olympic__code: varchar(3)
+        country_name: varchar(50)
