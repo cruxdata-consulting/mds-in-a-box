@@ -59,8 +59,8 @@ class DbtModelGenerator:
         self._current_table['name'] = table_name
         self._current_table['model_dir'] = f"{self._dbt_staging_dir}/{self.source_name}"
         self._current_table['source_schema_file'] = f"{self._current_table['model_dir']}/_source_schema.yml"
-        self._current_table['model_file'] = f"{self._current_table['model_dir']}/{self.config.get('schema_prefix')}{table_schema.get('name')}.sql"
-        self._current_table['schema_file'] = f"{self._current_table['model_dir']}/{self.config.get('schema_prefix')}{table_schema.get('name')}.yml"
+        self._current_table['model_file'] = f"{self._current_table['model_dir']}/{self.config.get('schema_prefix')}{self.source_name}_{table_schema.get('name')}.sql" 
+        self._current_table['schema_file'] = f"{self._current_table['model_dir']}/{self.config.get('schema_prefix')}{self.source_name}_{table_schema.get('name')}.yml"
 
         # Generate new model content
         for k in table_schema.get('columns').keys():
@@ -107,7 +107,7 @@ class DbtModelGenerator:
                 existing_table_schema = yaml.safe_load(f)
 
             if self._has_breaking_changes(existing_table_schema, new_table_schema):
-                backup_schema_file = os.path.join(self._model_dir, f"{self.config.get('schema_prefix')}{self._current_table['name']}_{timestamp}.yml.bkup")
+                backup_schema_file = os.path.join(self._model_dir, f"{self.config.get('schema_prefix')}{self.source_name}_{self._current_table['name']}_{timestamp}.yml.bkup")
                 with open(backup_schema_file, 'w') as f:
                     f.write(existing_table_schema)
                 logger.warn(f"Breaking changes detected. Backup created: {backup_schema_file}")
@@ -121,7 +121,7 @@ class DbtModelGenerator:
             if diff.ratio() == 1:
                 logger.info(f"Staging models for {self._current_table['name']} are identical")
             else:
-                backup_model_file = os.path.join(self._model_dir, f"{self.config.get('schema_prefix')}{self._current_table['name']}_{timestamp}.sql.bkup")
+                backup_model_file = os.path.join(self._model_dir, f"{self.config.get('schema_prefix')}{self.source_name}_{self._current_table['name']}_{timestamp}.sql.bkup")
                 with open(backup_model_file, 'w') as f:
                     f.write(existing_model_content)
                 logger.warn(f"Staging model changes detected. Backup created: {backup_model_file}")
@@ -217,7 +217,7 @@ class DbtModelGenerator:
         schema_content = {'version': 2, 'models': []}
         
         table_info = {}
-        table_info['name'] = f"{self.config.get('schema_prefix')}{table_schema.get('name')}"
+        table_info['name'] = f"{self.config.get('schema_prefix')}{self.source_name}_{table_schema.get('name')}"
         if description := table_schema.get('description'):
             table_info['description'] = description
         table_info['columns'] = output_columns
