@@ -1,5 +1,5 @@
 alive-progress==3.1.5
-apache-superset==4.0.2
+apache-superset==4.1.0
 dbt-core>=1.7
 dbt-duckdb>=1.7
 dlt[duckdb]>=0.5.2
